@@ -37,7 +37,12 @@ limitations under the License.
         req.open('GET', url, false);
         req.send();
 
-        return req.status === 200;
+	try {
+          return JSON.parse(req.response);
+        }
+        catch {
+          return false;
+        }
       }
 
       const probePath = 'assets/config/config.json';
@@ -49,6 +54,9 @@ limitations under the License.
 
       for (let i = 0; i < pathSegments.length; i++) {
         const segment = pathSegments[i];
+	if(segment == "") {
+          continue;
+        }
         if (segment.length > 0) {
           basePath = basePath + segment + '/';
         }
