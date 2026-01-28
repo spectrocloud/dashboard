@@ -16,7 +16,7 @@
 
 FROM golang:1.23-alpine3.21 AS AIR
 
-RUN go install github.com/air-verse/air@latest
+RUN go install github.com/air-verse/air@v1.61.7
 
 FROM golang:1.23-alpine3.21
 
